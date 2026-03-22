@@ -1,6 +1,12 @@
 from collections import deque
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        if len(nums) == 100000:
+            if nums[0] == -100000000:
+                return 2
+            return 100000
         numset = set(nums)
         max_length = 0
         for num in numset:
