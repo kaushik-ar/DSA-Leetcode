@@ -5,7 +5,7 @@ class Solution:
 
         def find(p):
             while p!= par[p]:
-                # par[p] = par[par[p]]
+                par[p] = par[par[p]]
                 p = par[p]
             return p
         def union(n1, n2):
