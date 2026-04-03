@@ -10,7 +10,7 @@ class Solution:
 
         pre[0] = height[0]
         post[-1] = height[-1]
-        for i in range(1,n):
+        for i in range(0,n):
             pre[i] = max(pre[i-1],height[i])
 
         for i in range(n-2, -1, -1):
