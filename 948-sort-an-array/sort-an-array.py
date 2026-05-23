@@ -2,35 +2,34 @@ import random
 
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
-
-        def quicksort(left, right):
-
-            if left >= right:
-                return
-
-            pivot = nums[random.randint(left, right)]
-
-            lt = left
-            i = left
-            gt = right
-
-            while i <= gt:
-
-                if nums[i] < pivot:
-                    nums[lt], nums[i] = nums[i], nums[lt]
-                    lt += 1
-                    i += 1
-
-                elif nums[i] > pivot:
-                    nums[i], nums[gt] = nums[gt], nums[i]
-                    gt -= 1
-
+                
+        def merge(arr, left, mid, right):
+            l, r = arr[left:mid+1], arr[mid+1:right+1]
+            i, j, k = left, 0, 0
+            while j < len(l) and k < len(r):
+                if l[j] <= r[k]:
+                    arr[i] = l[j]
+                    j+=1
                 else:
-                    i += 1
-
-            quicksort(left, lt - 1)
-            quicksort(gt + 1, right)
-
-        quicksort(0, len(nums) - 1)
-
-        return nums
+                    arr[i] = r[k]
+                    k+=1
+                i+=1
+            while j < len(l):
+                arr[i] = l[j]
+                j+=1
+                i+=1
+            while k < len(r):
+                arr[i] = r[k]
+                k+=1
+                i+=1
+                
+        def mergeSort(arr, left, right):
+            if left == right:
+                return arr
+            mid = (left+right)//2
+            mergeSort(arr, left, mid)
+            mergeSort(arr, mid+1, right)
+            merge(arr, left, mid, right)
+            return arr
+        
+        return mergeSort(nums, 0, len(nums)-1)
