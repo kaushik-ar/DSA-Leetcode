@@ -3,21 +3,14 @@ class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         if not nums:
             return 0
-        # if len(nums) == 100000:
-        #     if nums[0] == -100000000:
-        #         return 2
-        #     return 100000
-        numset = set(nums)
+        numSet = set(nums)
         max_length = 0
-        for num in numset:
-            if num-1 not in numset:
-                length = 1
-                curr = num
-                while curr+1 in numset:
-                    length += 1
-                    curr += 1
-                max_length = max(max_length, length)
+        for num in numSet:
+            if num-1 not in numSet:
+                length = 0
+                temp = num
+                while temp in numSet:
+                    length+=1
+                    temp+=1
+                max_length = max(length, max_length)
         return max_length
-
-
-        
