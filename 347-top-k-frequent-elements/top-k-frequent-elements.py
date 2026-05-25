@@ -12,11 +12,12 @@ class Solution:
                 bucket[freq].append(num)
         res = []
         for i in range(len(nums), 0, -1):
+            if i in bucket:
 
-            for j in bucket[i]:
-                res.append(j)
-                if len(res)==k:
-                    return res
+                for j in bucket[i]:
+                    res.append(j)
+                    if len(res)==k:
+                        return res
 
         return res
 
