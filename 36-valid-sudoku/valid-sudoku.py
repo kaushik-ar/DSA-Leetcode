@@ -6,26 +6,21 @@ class Solution:
 
         for r in range(9):
             for c in range(9):
-                val = board[r][c]
-                if val == ".":
+                if board[r][c] == ".":
                     continue
-                
-                if val in rows[r]:
+                if board[r][c] in rows[r]:
                     return False
-                rows[r].add(val)
+                rows[r].add(board[r][c])
 
-                if val in columns[c]:
+                if board[r][c]  in columns[c]:
                     return False
-                columns[c].add(val)
+                columns[c].add(board[r][c])
 
-                square_index = (r//3)*3 + (c//3)
-                if val in squares[square_index]:
+                if board[r][c] in squares[(r//3)*3 + (c//3)]:
                     return False
-                squares[square_index].add(val)
-            
+                squares[(r//3)*3 + (c//3)].add(board[r][c])
+
         return True
-
-
 
 
 
