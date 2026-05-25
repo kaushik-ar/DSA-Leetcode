@@ -7,7 +7,3 @@ class Solution:
             key = ''.join(sorted(string.lower()))
             hashmap[key].append(string)
         return list(hashmap.values())
-        
-
-
-        
